@@ -1,5 +1,0 @@
-# id|name|phone|email|membership
-1|Aarav Mehta|9876543210|aarav.mehta@gmail.com|Gold
-2|Diya Patel|9898012345|diya.patel@yahoo.com|Silver
-3|Rohan Shah|9825098250|rohan.shah@outlook.com|Regular
-4|Isha Desai|9712345678|isha.desai@gmail.com|Regular
