@@ -1,5 +1,0 @@
-# id|customerId|photographerId|packageId|date|startHour|durationHours|totalPrice|status
-1|1|1|4|2027-02-14|9|8|40500.00|Confirmed
-2|2|2|2|2027-01-20|10|2|7125.00|Confirmed
-3|3|3|3|2027-01-20|11|4|12000.00|Completed
-4|4|2|1|2026-12-05|15|1|3500.00|Cancelled
