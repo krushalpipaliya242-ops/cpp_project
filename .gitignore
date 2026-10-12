@@ -1,0 +1,4 @@
+*.tmp
+*.o
+Executable/Project
+__pycache__/

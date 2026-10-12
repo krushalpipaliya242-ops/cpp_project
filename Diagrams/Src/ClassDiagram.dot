@@ -1,0 +1,88 @@
+digraph ClassDiagram {
+  graph [rankdir=BT, splines=true, nodesep=0.7, ranksep=1.1, concentrate=false, fontname="Helvetica", labelloc=t, fontsize=22,
+         label="Photography Studio Booking (CPP31) - Class Diagram\n( + public   - private   # protected   {abstract} = pure virtual )"];
+  node  [shape=plaintext, fontname="Helvetica", fontsize=11];
+  edge  [fontname="Helvetica", fontsize=10];
+
+  Record [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#FFF4D6">
+    <TR><TD BORDER="1" SIDES="B"><B><I>Record</I></B><BR/>«abstract»</TD></TR>
+    <TR><TD ALIGN="LEFT" BORDER="1" SIDES="B">- id : int</TD></TR>
+    <TR><TD ALIGN="LEFT">+ Record()<BR ALIGN="LEFT"/>+ Record(id : int)<BR ALIGN="LEFT"/>+ ~Record() {virtual}<BR ALIGN="LEFT"/>+ getId() : int<BR ALIGN="LEFT"/>+ setId(newId : int) : void<BR ALIGN="LEFT"/><I>+ typeName() : string {abstract}</I><BR ALIGN="LEFT"/><I>+ header() : string {abstract}</I><BR ALIGN="LEFT"/><I>+ display() : void {abstract}</I><BR ALIGN="LEFT"/><I>+ toFileLine() : string {abstract}</I><BR ALIGN="LEFT"/><I>+ matches(keyword : string) : bool {abstract}</I><BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  Person [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#FFF4D6">
+    <TR><TD BORDER="1" SIDES="B"><B><I>Person</I></B><BR/>«abstract»</TD></TR>
+    <TR><TD ALIGN="LEFT" BORDER="1" SIDES="B">- name : string<BR ALIGN="LEFT"/>- phone : string<BR ALIGN="LEFT"/>- email : string<BR ALIGN="LEFT"/></TD></TR>
+    <TR><TD ALIGN="LEFT">+ Person()<BR ALIGN="LEFT"/>+ Person(id, name, phone, email)<BR ALIGN="LEFT"/>+ getName() / getPhone() / getEmail()<BR ALIGN="LEFT"/>+ setName() / setPhone() / setEmail()<BR ALIGN="LEFT"/><I>+ roleDescription() : string {abstract}</I><BR ALIGN="LEFT"/>+ matches(keyword) : bool<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  Customer [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#DDEBFF">
+    <TR><TD BORDER="1" SIDES="B"><B>Customer</B></TD></TR>
+    <TR><TD ALIGN="LEFT" BORDER="1" SIDES="B">- membership : string</TD></TR>
+    <TR><TD ALIGN="LEFT">+ Customer()<BR ALIGN="LEFT"/>+ Customer(id, name, phone, email, membership)<BR ALIGN="LEFT"/>+ getMembership() / setMembership()<BR ALIGN="LEFT"/>+ discountRate() : double<BR ALIGN="LEFT"/>+ roleDescription() : string<BR ALIGN="LEFT"/>+ display() / header() / typeName()<BR ALIGN="LEFT"/>+ toFileLine() : string<BR ALIGN="LEFT"/>+ fromFileLine(line) : Customer {static}<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  Photographer [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#DDEBFF">
+    <TR><TD BORDER="1" SIDES="B"><B>Photographer</B></TD></TR>
+    <TR><TD ALIGN="LEFT" BORDER="1" SIDES="B">- specialty : string<BR ALIGN="LEFT"/>- experienceYears : int<BR ALIGN="LEFT"/></TD></TR>
+    <TR><TD ALIGN="LEFT">+ Photographer()<BR ALIGN="LEFT"/>+ Photographer(id, name, phone, email,<BR ALIGN="LEFT"/>    specialty, experienceYears)<BR ALIGN="LEFT"/>+ getSpecialty() / setSpecialty()<BR ALIGN="LEFT"/>+ getExperienceYears() / setExperienceYears()<BR ALIGN="LEFT"/>+ roleDescription() : string<BR ALIGN="LEFT"/>+ matches(keyword) : bool<BR ALIGN="LEFT"/>+ toFileLine() : string<BR ALIGN="LEFT"/>+ fromFileLine(line) : Photographer {static}<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  Package [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#DDEBFF">
+    <TR><TD BORDER="1" SIDES="B"><B>Package</B></TD></TR>
+    <TR><TD ALIGN="LEFT" BORDER="1" SIDES="B">- name : string<BR ALIGN="LEFT"/>- price : double<BR ALIGN="LEFT"/>- durationHours : int<BR ALIGN="LEFT"/>- numPhotos : int<BR ALIGN="LEFT"/></TD></TR>
+    <TR><TD ALIGN="LEFT">+ Package()<BR ALIGN="LEFT"/>+ Package(id, name, price, hours, photos)<BR ALIGN="LEFT"/>+ getters / setters (validated)<BR ALIGN="LEFT"/>+ display() / header() / typeName()<BR ALIGN="LEFT"/>+ toFileLine() : string<BR ALIGN="LEFT"/>+ matches(keyword) : bool<BR ALIGN="LEFT"/>+ fromFileLine(line) : Package {static}<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  Booking [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#DDEBFF">
+    <TR><TD BORDER="1" SIDES="B"><B>Booking</B></TD></TR>
+    <TR><TD ALIGN="LEFT" BORDER="1" SIDES="B">- customerId : int<BR ALIGN="LEFT"/>- photographerId : int<BR ALIGN="LEFT"/>- packageId : int<BR ALIGN="LEFT"/>- date : string<BR ALIGN="LEFT"/>- startHour : int<BR ALIGN="LEFT"/>- durationHours : int<BR ALIGN="LEFT"/>- totalPrice : double<BR ALIGN="LEFT"/>- status : string<BR ALIGN="LEFT"/></TD></TR>
+    <TR><TD ALIGN="LEFT">+ Booking()<BR ALIGN="LEFT"/>+ Booking(id, cid, pid, pkgId, date, start,<BR ALIGN="LEFT"/>    duration, total, status)<BR ALIGN="LEFT"/>+ getters / setters (validated)<BR ALIGN="LEFT"/>+ getEndHour() : int<BR ALIGN="LEFT"/>+ isActive() : bool<BR ALIGN="LEFT"/>+ overlaps(date, start, end) : bool<BR ALIGN="LEFT"/>+ toFileLine() : string<BR ALIGN="LEFT"/>+ fromFileLine(line) : Booking {static}<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  DynArray [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#E6F7E6">
+    <TR><TD BORDER="1" SIDES="B"><B>DynArray&lt;T&gt;</B><BR/>«template»</TD></TR>
+    <TR><TD ALIGN="LEFT" BORDER="1" SIDES="B">- data : T*   (new T[capacity])<BR ALIGN="LEFT"/>- count : int<BR ALIGN="LEFT"/>- capacity : int<BR ALIGN="LEFT"/></TD></TR>
+    <TR><TD ALIGN="LEFT">+ DynArray(initialCapacity : int)<BR ALIGN="LEFT"/>+ ~DynArray()   (delete[] data)<BR ALIGN="LEFT"/>+ add(item : T) : void<BR ALIGN="LEFT"/>+ removeAt(index : int) : void<BR ALIGN="LEFT"/>+ indexOfId(id : int) : int<BR ALIGN="LEFT"/>+ at(index : int) : T&amp;<BR ALIGN="LEFT"/>+ size() : int<BR ALIGN="LEFT"/>- grow() : void<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  FileManager [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#F3E6FF">
+    <TR><TD BORDER="1" SIDES="B"><B>FileManager</B><BR/>«utility, static»</TD></TR>
+    <TR><TD ALIGN="LEFT">+ exists(path) : bool<BR ALIGN="LEFT"/>+ readLines(path) : vector&lt;string&gt;<BR ALIGN="LEFT"/>+ writeLines(path, header, lines) : void<BR ALIGN="LEFT"/>+ save&lt;T&gt;(path, header, DynArray&lt;T&gt;&amp;) : int<BR ALIGN="LEFT"/>+ load&lt;T&gt;(path, DynArray&lt;T&gt;&amp;) : int<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  Validator [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#F3E6FF">
+    <TR><TD BORDER="1" SIDES="B"><B>Validator / Input</B><BR/>«utility, static»</TD></TR>
+    <TR><TD ALIGN="LEFT">+ checkName / checkPhone / checkEmail<BR ALIGN="LEFT"/>+ checkDate / checkMembership / checkStatus<BR ALIGN="LEFT"/>+ parseInt / parseDouble<BR ALIGN="LEFT"/>+ askText / askInt / askDouble / askYesNo<BR ALIGN="LEFT"/>   (throw ValidationException)<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  Exceptions [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#FFE3E3">
+    <TR><TD BORDER="1" SIDES="B"><B>StudioException</B><BR/>(extends std::runtime_error)</TD></TR>
+    <TR><TD ALIGN="LEFT">ValidationException<BR ALIGN="LEFT"/>FileException<BR ALIGN="LEFT"/>RecordNotFoundException<BR ALIGN="LEFT"/>BookingException<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  Studio [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#FFD9B3">
+    <TR><TD BORDER="1" SIDES="B"><B>Studio</B><BR/>«system class»</TD></TR>
+    <TR><TD ALIGN="LEFT" BORDER="1" SIDES="B">- name : string<BR ALIGN="LEFT"/>- openHour, closeHour, rooms : int<BR ALIGN="LEFT"/>- dataDir : string<BR ALIGN="LEFT"/>- unsaved : bool<BR ALIGN="LEFT"/>- customers : DynArray&lt;Customer&gt;<BR ALIGN="LEFT"/>- photographers : DynArray&lt;Photographer&gt;<BR ALIGN="LEFT"/>- packages : DynArray&lt;Package&gt;<BR ALIGN="LEFT"/>- bookings : DynArray&lt;Booking&gt;<BR ALIGN="LEFT"/></TD></TR>
+    <TR><TD ALIGN="LEFT">+ Studio()   + Studio(name, open, close, rooms, dir)   + ~Studio()<BR ALIGN="LEFT"/>+ addRecord() / displayRecords() / searchRecord()<BR ALIGN="LEFT"/>+ updateRecord() / deleteRecord()<BR ALIGN="LEFT"/>+ mainTransaction() / report() / saveLoadMenu()<BR ALIGN="LEFT"/>+ load() : void      + save() : void<BR ALIGN="LEFT"/>- bookSession() / cancelBooking() / completeBooking()<BR ALIGN="LEFT"/>- checkAvailability(date, start, end, photographerId, excludeId)<BR ALIGN="LEFT"/>- addCustomer() / addPhotographer() / addPackage()<BR ALIGN="LEFT"/>- updateCustomer() / updatePhotographer() / updatePackage() / updateBooking()<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+
+  Main [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" BGCOLOR="#EEEEEE">
+    <TR><TD><B>main.cpp</B><BR/>showMenu() + switch(choice)<BR/>creates Studio, calls its functions</TD></TR></TABLE>>];
+
+  // inheritance (hollow triangle)
+  Person       -> Record [arrowhead=empty];
+  Package      -> Record [arrowhead=empty];
+  Booking      -> Record [arrowhead=empty];
+  Customer     -> Person [arrowhead=empty];
+  Photographer -> Person [arrowhead=empty];
+
+  // composition Studio *-- DynArray
+  Studio -> DynArray [arrowhead=none, arrowtail=diamond, dir=back, headlabel="  4 instances\n  1", taillabel="1  ", labeldistance=2.5];
+  // DynArray holds entity objects (aggregation by template argument)
+  DynArray -> Customer     [style=dashed, arrowhead=vee, label=" <<T>>"];
+  DynArray -> Booking      [style=dashed, arrowhead=vee, label=" <<T>>"];
+  DynArray -> Package      [style=dashed, arrowhead=vee, label=" <<T>>"];
+  DynArray -> Photographer [style=dashed, arrowhead=vee, label=" <<T>>"];
+
+  // associations by ID (Booking refers to the other three)
+  Booking -> Customer     [style=dashed, arrowhead=vee, constraint=false, label=" customerId  *..1"];
+  Booking -> Photographer [style=dashed, arrowhead=vee, constraint=false, label=" photographerId  *..1"];
+  Booking -> Package      [style=dashed, arrowhead=vee, constraint=false, label=" packageId  *..1"];
+
+  // dependencies
+  Studio -> FileManager [style=dashed, arrowhead=vee, label=" uses"];
+  Studio -> Validator   [style=dashed, arrowhead=vee, label=" uses"];
+  Studio -> Exceptions  [style=dashed, arrowhead=vee, label=" throws"];
+  Main   -> Studio      [style=solid,  arrowhead=vee, label=" creates / calls"];
+  FileManager -> Record [style=dashed, arrowhead=vee, label=" toFileLine()"];
+}

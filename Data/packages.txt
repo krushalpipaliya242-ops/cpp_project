@@ -1,0 +1,5 @@
+# id|name|price|durationHours|numPhotos
+1|Portrait Basic|3500.00|1|15
+2|Family Package|7500.00|2|40
+3|Product Catalogue|12000.00|4|100
+4|Wedding Premium|45000.00|8|400
