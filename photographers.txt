@@ -1,0 +1,4 @@
+# id|name|phone|email|specialty|experienceYears
+1|Kabir Joshi|9811122233|kabir.joshi@lensandlight.com|Wedding|12
+2|Meera Nair|9822233344|meera.nair@lensandlight.com|Portrait|7
+3|Arjun Rao|9833344455|arjun.rao@lensandlight.com|Product|5
